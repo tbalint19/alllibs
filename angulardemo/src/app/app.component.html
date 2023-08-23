@@ -1,0 +1,9 @@
+<h1>Hello {{ name }} from angular in our store</h1>
+
+<h2>Fruits:</h2>
+<ul>
+  <div *ngFor="let fruit of fruits">
+    <app-fruit-component [fruit]="fruit"></app-fruit-component>
+  </div>
+</ul>
+<button (click)="change()">Change</button>
