@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { OnInit } from '@angular/core';
 
 type Fruit = {
   name: string,
@@ -11,7 +13,20 @@ type Fruit = {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  ngOnInit(): void {
+    this.value.subscribe(v => localStorage.setItem("value", v))
+  }
+
+  value = new BehaviorSubject("")
+
+  reset() {
+    this.value.next("")
+  }
+
+  
+
   name = 'John';
 
   fruits: Fruit[] = [

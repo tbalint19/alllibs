@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { Fruit } from './components/Fruit'
 
@@ -9,6 +9,8 @@ type Fruit = {
 }
 
 const App = () => {
+
+  const [value, setValue] = useState("")
 
   // App state
   const [ name, setName ] = useState("John")
@@ -26,9 +28,20 @@ const App = () => {
     { name: "narancs", color: "orange", isAvailable: true },
   ]
 
+  useEffect(() => {
+    localStorage.setItem("value", value)
+  }, [ value ])
+
+
   return (
     <div>
       <h1>Hello {name} from react</h1>
+      <button onClick={() => {
+        setValue("")
+      }}>Reset</button>
+      <input type="text" value={value} onChange={e => {
+        setValue(e.target.value)
+      }} />
       <ul>
         {
           fruits.map(fruit => (
