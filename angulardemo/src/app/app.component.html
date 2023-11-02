@@ -1,16 +1,5 @@
-<h1>Hello {{ name }} from angular in our store</h1>
-
-<button (click)="reset()" >Reset</button>
-<input
-  type="text"
-  #valueInput
-  [ngModel]="value | async"
-  (ngModelChange)="value.next(valueInput.value)" >
-
-<h2>Fruits:</h2>
-<ul>
-  <div *ngFor="let fruit of fruits">
-    <app-fruit-component [fruit]="fruit"></app-fruit-component>
-  </div>
-</ul>
-<button (click)="change()">Change</button>
+<main>
+  <app-navbar></app-navbar>
+  <app-main></app-main>
+  <app-footer></app-footer>
+</main>
